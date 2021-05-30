@@ -3,20 +3,22 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { myStyle } from "../styles";
-import { LINK_URL, LOGGED } from "../constants";
+import { LINK_URL, LOGGED, ROLE } from "../constants";
 import UserMenu from "./userMenu";
 import { Link } from "react-router-dom";
 import CustomNavLink from "./customLink";
+
 
 export const MyMenu = () => {
   const classes = myStyle();
 
   const logged = localStorage.getItem(LOGGED);
+  const role = localStorage.getItem(ROLE);
 
   const LinkToLogin = (
     <>
       <Link
-        to={{pathname: LINK_URL.login, state: { from: window.location.href }}}
+        to={{ pathname: LINK_URL.login, state: { from: window.location.href } }}
         className={classes.btnLogin}
       >
         {"Login"}
@@ -24,7 +26,14 @@ export const MyMenu = () => {
     </>
   );
   const LoginOrLogoutComponent = logged ? <UserMenu /> : LinkToLogin;
-
+  const LinkToManagement =
+    role !== "admin" ? null : (
+      <CustomNavLink
+        to={LINK_URL.management}
+        label='Management'
+        activeOnlyWhenExact={false}
+      />
+    );
   return (
     <>
       <AppBar
@@ -60,11 +69,7 @@ export const MyMenu = () => {
               label='Contact'
               activeOnlyWhenExact={false}
             />
-            <CustomNavLink
-              to={LINK_URL.management}
-              label='Management'
-              activeOnlyWhenExact={false}
-            />
+            {LinkToManagement}
           </nav>
           {LoginOrLogoutComponent}
         </Toolbar>

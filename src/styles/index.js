@@ -51,13 +51,13 @@ export const myStyle = makeStyles((theme) => ({
     lineHeight: 1.75,
     letterSpacing: "0.02857em",
     textTransform: "uppercase",
-    transition:"0.2s",
-    '&:hover': {
-        fontWeight: "bold",
-     },
-     '&:active': {
-        color:"red"
-     },
+    transition: "0.2s",
+    "&:hover": {
+      fontWeight: "bold",
+    },
+    "&:active": {
+      color: "red",
+    },
   },
   btnLogin: {
     fontWeight: "bold",
@@ -80,7 +80,7 @@ export const myStyle = makeStyles((theme) => ({
     lineHeight: 1.6,
     letterSpacing: "0.0075em",
   },
-  menuActive:{
+  menuActive: {
     fontWeight: "bold",
   },
   companyName: {
@@ -112,16 +112,25 @@ export const myStyle = makeStyles((theme) => ({
     backgroundSize: "cover",
     backgroundPosition: "center",
   },
-  errorPage:{
-    width:'90%',
-    textAlign: 'center',
-    paddingBottom: '100px',
-    '&>h1':{
-    color:'red',
-    fontSize:'175px',
+  errorPage: {
+    width: "90%",
+    textAlign: "center",
+    paddingBottom: "100px",
+    "&>h1": {
+      color: "red",
+      fontSize: "175px",
     },
-    '&>h2':{
-      marginTop:"-100px",
-    }
-  }
+    "&>h2": {
+      marginTop: "-100px",
+    },
+  },
+  note: {
+    color: "rgba(0, 0, 0, 0.54)",
+    fontSize: "1.5rem",
+    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    fontWeight: 400,
+    lineHeight: 1.334,
+    letterSpacing: "0em",
+    textAlign: "justify",
+  },
 }));
