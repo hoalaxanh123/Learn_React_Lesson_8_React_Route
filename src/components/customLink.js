@@ -6,7 +6,7 @@ import React from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 
 const CustomNavLink = (props) => {
-	const {to,activeOnlyWhenExact,label,icon} = props
+	const {to,activeOnlyWhenExact,label} = props
   const classes = myStyle();
   let match = useRouteMatch({
     path: to,
@@ -16,7 +16,7 @@ const CustomNavLink = (props) => {
   return (
     <span className={match ? classes.menuActive : ""}>
       <Link to={{pathname: to, state: { from: props?.location?.pathname }}} className={classes.link}>
-        {icon}{label}
+        {label}
       </Link>
 			
     </span>
