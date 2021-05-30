@@ -37,3 +37,17 @@ export const TIERS = [
         buttonVariant: "outlined",
     },
 ];
+
+export const LOGGED='logged'
+export const USERNAME='usr'
+export const ROLE='role'
+
+
+export const LINK_URL={
+    "homepage":"/",
+    "about":"/about",
+    "contact":"/contact",
+    "management":"/management",
+    "login":"/login",
+    "logout":"/logout",
+}

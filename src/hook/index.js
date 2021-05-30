@@ -2,7 +2,6 @@ import toast from "react-hot-toast";
 
 export default function useSnackBar() {
     const showSnackbar = (message = "", type = "") => {
-        console.log("CAlled");
         switch (type) {
             case "success":
                 return toast.success(message);

@@ -3,7 +3,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import LoginContainer from './loginContainer';
+import LoginComponent from './login';
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -51,7 +51,7 @@ export default function LoginModal(props) {
             >
                 <Fade in={open}>
                     <div className={classes.paper}>
-                        <LoginContainer/>
+                        <LoginComponent/>
                     </div>
                 </Fade>
             </Modal>

@@ -7,27 +7,31 @@ import MyMenu from "../components/menu";
 
 const withMyTheme = (WrappedComponent) => {
   return function () {
-  return (
-    <>
-      <CssBaseline />
-      {/* Menu */}
-      <MyMenu/>
-      {/* End Menu */}
-      
-      {/* Content */}
-      <WrappedComponent />
-      {/* End Content */}
+    return (
+      <>
+        <CssBaseline />
+        {/* Menu */}
+        <MyMenu />
+        {/* End Menu */}
 
-      {/* Copyright */}
-      <CopyrightCustom />
-      {/* End Copyright */}
+        {/* Content */}
+        <WrappedComponent />
+        {/* End Content */}
 
-      {/* Message bar */}
-      <Toaster position='bottom-center' toastOptions={{ duration: 3000 }} />
-      {/* End Message bar */}
+        {/* Copyright */}
+        <CopyrightCustom />
+        {/* End Copyright */}
 
-    </>
-  );
-  }
+        {/* Message bar */}
+        <Toaster
+          position='bottom-center'
+          toastOptions={{
+            duration: 3000,
+          }}
+        />
+        {/* End Message bar */}
+      </>
+    );
+  };
 };
 export default withMyTheme;

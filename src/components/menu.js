@@ -1,16 +1,29 @@
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
-import Button from "@material-ui/core/Button";
-import React, { useState } from "react";
+import React from "react";
 import { myStyle } from "../styles";
-import LoginModal from "../components/fadeModal";
-
+import { LINK_URL, LOGGED } from "../constants";
+import UserMenu from "./userMenu";
+import { Link } from "react-router-dom";
+import CustomNavLink from "./customLink";
 
 export const MyMenu = () => {
   const classes = myStyle();
-  const [showModal, setShowModal] = useState(false);
+
+  const logged = localStorage.getItem(LOGGED);
+
+  const LinkToLogin = (
+    <>
+      <Link
+        to={{pathname: LINK_URL.login, state: { from: window.location.href }}}
+        className={classes.btnLogin}
+      >
+        {"Login"}
+      </Link>
+    </>
+  );
+  const LoginOrLogoutComponent = logged ? <UserMenu /> : LinkToLogin;
 
   return (
     <>
@@ -27,48 +40,35 @@ export const MyMenu = () => {
             noWrap
             className={classes.toolbarTitle}
           >
-            TMA Solution
+            <Link to={LINK_URL.homepage} className={classes.menuTittle}>
+              TMA Solution
+            </Link>
           </Typography>
           <nav>
-            <Link
-              variant='button'
-              color='textPrimary'
-              href='#'
-              className={classes.link}
-            >
-              Features
-            </Link>
-            <Link
-              variant='button'
-              color='textPrimary'
-              href='#'
-              className={classes.link}
-            >
-              Enterprise
-            </Link>
-            <Link
-              variant='button'
-              color='textPrimary'
-              href='#'
-              className={classes.link}
-            >
-              Support
-            </Link>
+            <CustomNavLink
+              to={LINK_URL.homepage}
+              label={"Home"}
+              activeOnlyWhenExact={true}
+            />
+            <CustomNavLink
+              to={LINK_URL.about}
+              label='About'
+              activeOnlyWhenExact={false}
+            />
+            <CustomNavLink
+              to={LINK_URL.contact}
+              label='Contact'
+              activeOnlyWhenExact={false}
+            />
+            <CustomNavLink
+              to={LINK_URL.management}
+              label='Management'
+              activeOnlyWhenExact={false}
+            />
           </nav>
-          <Button
-            href='#'
-            color='primary'
-            variant='outlined'
-            className={classes.link}
-            onClick={() => setShowModal(!showModal)}
-          >
-            Login
-          </Button>
+          {LoginOrLogoutComponent}
         </Toolbar>
       </AppBar>
-      {/* Login modal */}
-      <LoginModal isDisplayModal={showModal} setShowModal={setShowModal} />
-      {/* End Login modal */}
     </>
   );
 };
